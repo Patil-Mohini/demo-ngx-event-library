@@ -63,6 +63,7 @@ select,
     border-radius: 0.28571429rem;
     font-size: 0.785rem !important;
     font-weight: 500 !important;
+    width: 100% !important;
     //color: #b3b1b1;
 }
 
@@ -225,4 +226,8 @@ sb-icon-dropdown {
 
 .required {
     color: red;
+}
+.ui.modal{
+    display: block !important;
+    max-width: 45rem;
 }

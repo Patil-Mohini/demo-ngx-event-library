@@ -1,0 +1,16 @@
+<ng-container>
+    <div (click)="showImagePicker = true"
+     class="mb-20 w-15">
+        <div class="app-icon-label" >Icon label</div>
+        <div *ngIf='!appIcon' class="sb-centericon">
+            <div>
+                <i id="icon_appIcon" name="icon_appIcon" class="icon image outline" ></i>
+            </div>
+            <div class="addImageText">Add Image</div>
+        </div>
+        <img *ngIf="appIcon" 
+        class="ui image sb-appicon" 
+        src="{{appIcon}}"/>
+    </div>
+    <lib-asset-browser *ngIf="showImagePicker" [showImagePicker]="showImagePicker" (assetBrowserEmitter)="collectionIconHandler($event)" (modalDismissEmitter)="handleModalDismiss($event)"></lib-asset-browser>
+</ng-container>

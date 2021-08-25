@@ -11,7 +11,7 @@
     .sb-modal-dropdown-web{
         ul{
             border: none !important;
-        
+
         }
     }
 }
@@ -39,5 +39,10 @@
     margin-left: 1rem;
 }
 .sb-search-box .sb-search-input {
-width: auto !important; 
+width: auto !important;
+}
+
+select
+{
+  height: 100% !important;
 }

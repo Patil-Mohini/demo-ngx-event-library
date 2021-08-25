@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EventDetailComponent } from './components/event-detail/event-detail.component';
 import { EventListComponent } from './components/event-list/event-list.component';
@@ -14,17 +14,33 @@ import { NgxIziToastModule } from 'ngx-izitoast';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { EventCalenderComponent } from './components/event-calender/event-calender.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+ //import {SuiModule} from 'ng2-semantic-ui/dist';
+import {SuiModule} from 'ng2-semantic-ui-v9';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
+
+// Import your library
+// import { SlickModule } from 'ngx-slick';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { EnrollEventUsersComponent } from './components/enroll-event-users/enroll-event-users.component'; // <-- import the module
+ 
 
 @NgModule({
   declarations: [
-    EventDetailComponent, 
-    EventListComponent, 
+    EventDetailComponent,
+    EventListComponent,
     EventCreateComponent,
     JoinEventComponent,
     AdvanceEventDetailComponent,
     CoverEventDetailComponent,
-    EventFilterComponent
+    EventFilterComponent,
+    EnrollEventUsersComponent,
+    EventCalenderComponent
   ],
   imports: [
     CommonModule,
@@ -32,16 +48,27 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
     FormsModule,
     ReactiveFormsModule,
     EventRoutingModule,
-    NgxIziToastModule, 
+    NgxIziToastModule,
     HttpClientModule,
     NgxPaginationModule,
+    SuiModule,
+    InfiniteScrollModule,
+    // Specify your library as an import
+   // SlickModule.forRoot(),
+    SlickCarouselModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: httpTranslateLoader,
         deps: [HttpClient]
       }
-    })
+    }),
+    
+    CommonModule,
+    FormsModule,
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   exports: [
     EventDetailComponent,
@@ -50,7 +77,9 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
     JoinEventComponent,
     AdvanceEventDetailComponent,
     CoverEventDetailComponent,
-    EventFilterComponent
+    EventFilterComponent,
+    EnrollEventUsersComponent,
+    EventCalenderComponent
   ],
   providers: [ ]
 })

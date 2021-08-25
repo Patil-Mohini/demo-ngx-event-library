@@ -1,0 +1,50 @@
+<div *ngIf="showDownloadCodeBtn && enrollEventDetails?.length > 0">
+    <button class="sb-btn sb-btn-normal sb-btn-secondary my-16" (click)=getEnrollDataCsv();>
+      Download CSV
+    </button>
+</div>
+
+<div class="table-responsive" *ngIf="enrollEventDetails?.length > 0">
+    <table class="sb-table sb-table-sortable sb-table-blue-strip">
+        <thead>
+            <tr class="sb-table-head">
+                <th class="w-10">User Name</th>
+                <th class="w-10">Email</th>
+                <th class="w-10">Enrollment date</th>
+                <th class="w-10">Attendance status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of enrollEventDetails;let i = index">
+                <!-- <td>{{i + 1}}</td> -->
+                <td class="white-space-inherit">{{item.userFname}} {{item.userLname}}</td>
+                <td class="white-space-inherit">{{item.userEmail}}</td>
+                <td class="white-space-inherit">{{item.enrolledDate | date: 'dd-MM-yyyy'}}</td>
+                <td class="white-space-inherit ml-auto mr-15 p-10 mt-8">
+                    <span class="sb-label-status sb-label-status-success" *ngIf="item?.userAttendantStatus == 'Present'">
+                            <span class="sb-label-status-indicator sb-label-status-indicator-success">
+                            </span> {{item.userAttendantStatus}}
+                    </span>
+                    <span class="sb-label-status sb-label-status-error" *ngIf="item?.userAttendantStatus != 'Present'">
+                            <span class="sb-label-status-indicator sb-label-status-indicator-error">
+                            </span> {{item.userAttendantStatus}}
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+<div *ngIf="enrollUserlist">
+    <table class="w-100">
+        <tr>
+            <td class="w-17-5"> <span class="fs-0-92 font-weight-bold"> {{'Enrolled Users' |
+                translate}}
+            </span></td>
+            <td class="w-80"><span class="fs-0-92 mr-12">
+                {{enrollUserlist}}</span></td>
+        </tr>
+    </table>
+</div>

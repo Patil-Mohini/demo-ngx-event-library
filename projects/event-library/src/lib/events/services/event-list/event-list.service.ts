@@ -24,8 +24,26 @@ export class EventListService {
     return this.dataService.get(req);
   }
 
-  getEventFilters() {
-    // return this.http.get<any>('assets/eventFilter.json');
+  getMyEventList(userId) {
+    console.log(userId);
+    const req = {
+      url: this.userConfigService.getConfigUrl().myEvents
+    };
+
+    return this.dataService.get(req);
+  }
+
+  // getEventFilters() {
+     // return this.http.get<any>('assets/eventFilter.json');
+  // }
+
+  getCalenderlist() {
+    const req = {
+      url: this.userConfigService.getConfigUrl().calenderevent
+    };
+
+    return this.dataService.get(req);
+    
   }
 
 }

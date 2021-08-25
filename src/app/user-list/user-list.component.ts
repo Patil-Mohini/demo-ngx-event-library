@@ -20,7 +20,7 @@ export class UserListComponent implements OnInit {
   showEventListPage(){
     this.eventListService.getEventList().subscribe((data:any)=>{
        console.log("data = ", data);
-       this.eventList = data.result.content;
+       this.eventList = data.result.events;
       })
   }
 

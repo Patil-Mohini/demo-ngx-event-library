@@ -10,11 +10,11 @@ import { TranslateService } from '@ngx-translate/core';
 export class EventFilterComponent implements OnInit, OnChanges {
 
   @Input() filterValues: any;
+  @Input() filterConfig: any;
   @Input() filterOpenStatus: boolean;
   @Output() filterChangeEvent: EventEmitter<any> = new EventEmitter();
 
   public searchFilterFormConfig: any;
-  @Input() filterConfig: any;
   public isFilterShow = false;
   public filterFields: any;
   public currentFilters: any;
@@ -29,6 +29,7 @@ export class EventFilterComponent implements OnInit, OnChanges {
       this.isFilterShow = this.filterOpenStatus;
     }
   ngOnInit(): void { 
+    console.log(this.filterConfig);
   }
 
   initializeForm() { }

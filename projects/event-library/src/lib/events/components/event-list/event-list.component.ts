@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-
 @Component({
   selector: 'sb-event-list',
   templateUrl: './event-list.component.html',
@@ -13,8 +12,9 @@ export class EventListComponent implements OnInit {
   @Input() paginateLimit: number = 5;
   @Output() eventDetailData = new EventEmitter();
   @Output() redirectToDetail = new EventEmitter();
-
+  @Input() myEvents: any;
   @Input() redirection: any = 'event';
+  p:any;
   constructor(
     private router: Router,
     public translate: TranslateService
@@ -23,11 +23,10 @@ export class EventListComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("-----",this.myEvents);
   }
 
-  /*onEventWrapper(identifier) {
-    alert('hiii2');
-    
+  /*onEventWrapper(identifier) {   
     this.router.navigate([this.redirection], {
       queryParams: {
         identifier: identifier,
@@ -36,7 +35,12 @@ export class EventListComponent implements OnInit {
     });
   }*/
 
+  slideConfig = {"slidesToShow": 4, "slidesToScroll": 4};
+
   navToEventDetail(res){
       this.eventDetailData.emit(res);
+    }
+  slickInit(event){
+
     }
 }

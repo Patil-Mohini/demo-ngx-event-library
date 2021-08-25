@@ -53,10 +53,10 @@ export class CoverEventDetailComponent implements OnInit {
   }
 
   upate(identifier, versionKey) {
-     this.router.navigate(['/event-post'], {
+    this.router.navigate(['/event-post'], {
       queryParams: {
-        identifier: identifier,
-        versionKey: versionKey
+        identifier: this.eventDetailItem.identifier,
+        versionKey: this.eventDetailItem.versionKey
       }
     });
   }
